@@ -6,24 +6,16 @@ import loginService from './services/login'
 import taskService from './services/tasks'
 
 const App = () => {
-  const [blogs, setBlogs] = useState([])
   const [tasks, setTasks] = useState([])
   const [username, setUsername] = useState('') 
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState(null)
-  const [newBlog, setNewBlog] = useState('')
   const [user, setUser] = useState(null)
   
 
   useEffect(() => {
-    blogService.getAll().then(blogs =>
-      setBlogs( blogs )
-    )  
-  }, [])
-
-  useEffect(() => {
     taskService.getAll().then(tasks => 
-      setBlogs( tasks )
+      setTasks( tasks )
       )
   }, [])
 
@@ -56,10 +48,6 @@ const App = () => {
     }
   }
 
-  const addBlog = () => {
-
-  }
-
   const loginForm = () => (
     <form onSubmit={handleLogin}>
       <div>
@@ -84,15 +72,16 @@ const App = () => {
     </form>      
   )
 
-  const noteForm = () => (
-    <form onSubmit={addBlog}>
-    <input
-      value={newBlog}
-      onChange={({ target }) => setNewBlog(target.value)}
-    />
-    <button type="submit">save</button>
-  </form>  
-  )
+  // const noteForm = () => (
+  //   <form onSubmit={addBlog}>
+  //   <input
+  //     value={newBlog}
+  //     onChange={({ target }) => setNewBlog(target.value)}
+  //   />
+  //   <button type="submit">save</button>
+  // </form>  
+  // )
+
 const handleLogout = (enevt) => {
   window.localStorage.removeItem('loggedBlogappUser')
   setUser(null)
@@ -112,7 +101,8 @@ const logout = () => (
       loginForm() :
       <div>
         <p>{user.name} logged in {logout()}</p>
-        {noteForm()}
+
+      <h2>Tehtävät</h2>
       {tasks.map(task => 
         <Task key={task.id} task={task} />
         )}
