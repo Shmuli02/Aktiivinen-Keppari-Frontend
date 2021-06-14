@@ -1,20 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import Blog from './components/Blog'
+import Task from './components/Task'
 import blogService from './services/blogs'
 import loginService from './services/login'
+import taskService from './services/tasks'
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
+  const [tasks, setTasks] = useState([])
   const [username, setUsername] = useState('') 
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState(null)
   const [newBlog, setNewBlog] = useState('')
   const [user, setUser] = useState(null)
+  
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
       setBlogs( blogs )
     )  
+  }, [])
+
+  useEffect(() => {
+    taskService.getAll().then(tasks => 
+      setBlogs( tasks )
+      )
   }, [])
 
   useEffect(() => {
@@ -103,10 +113,9 @@ const logout = () => (
       <div>
         <p>{user.name} logged in {logout()}</p>
         {noteForm()}
-      {blogs.map(blog =>
-        <Blog key={blog.id} blog={blog} />
-      )}
-      
+      {tasks.map(task => 
+        <Task key={task.id} task={task} />
+        )}
     </div>
       
     }
