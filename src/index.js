@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import ReactDOM from 'react-dom'
-import Notes from './pages/Notes'
-// import Login from './pages/Login'
-import taskService from './services/tasks'
-import Home from './pages/Home'
-import {Navbar, Nav} from 'react-bootstrap'
 
+import Notes from './pages/Notes'
+import Login from './pages/Login'
+import Home from './pages/Home'
+
+
+import taskService from './services/tasks'
+
+import ReactDOM from 'react-dom'
+import {Navbar, Nav} from 'react-bootstrap'
 import {
   BrowserRouter as Router,
   Switch,
@@ -42,33 +45,34 @@ const Users = () => (
   </div>
 )
 
-const Login = (props) => {
-  const history = useHistory()
+// const Login = (props) => {
+//   const history = useHistory()
 
-  const onSubmit = (event) => {
-    event.preventDefault()
-    props.onLogin('mluukkai')
-    history.push('/')
-  }
+//   const onSubmit = (event) => {
+//     event.preventDefault()
+//     props.onLogin('mluukkai')
+//     history.push('/')
+//   }
 
-  return (
-    <div>
-      <h2>login</h2>
-      <form onSubmit={onSubmit}>
-        <div>
-          username: <input />
-        </div>
-        <div>
-          password: <input type='password' />
-        </div>
-        <button type="submit">login</button>
-      </form>
-    </div>
-  )
-}
+//   return (
+//     <div>
+//       <h2>login</h2>
+//       <form onSubmit={onSubmit}>
+//         <div>
+//           username: <input />
+//         </div>
+//         <div>
+//           password: <input type='password' />
+//         </div>
+//         <button type="submit">login</button>
+//       </form>
+//     </div>
+//   )
+// }
 
 const App = () => {
   const [notes, setNotes] = useState([])
+  const [user, setUser] = useState(null) 
   
   useEffect(() => {
     taskService.getAll().then(tasks => 
@@ -76,7 +80,15 @@ const App = () => {
       )
   }, [])
 
-  const [user, setUser] = useState(null) 
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
+    if (loggedUserJSON) {
+      const logUser = JSON.parse(loggedUserJSON)
+      setUser(logUser.username)
+    }
+  }, [])
+
+  console.log(user)
 
   const login = (user) => {
     setUser(user)
@@ -86,6 +98,15 @@ const App = () => {
     padding: 5
   }
 
+  const handleLogout = (enevt) => {
+    window.localStorage.removeItem('loggedBlogappUser')
+    setUser(null)
+  }
+  
+  const logout = () => (
+    <button onClick={handleLogout}>Logout</button>
+  )
+
   return (
     <div>
     <Router>
@@ -94,18 +115,18 @@ const App = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="#" as="span">
-              <Link style={padding} to="/">home</Link>
+              <Link style={padding} to="/">Home</Link>
             </Nav.Link>
             <Nav.Link href="#" as="span">
               <Link style={padding} to="/notes">Tehtävät</Link>
             </Nav.Link>
             <Nav.Link href="#" as="span">
-              <Link style={padding} to="/users">users</Link>
+              <Link style={padding} to="/users">Oma sivu</Link>
             </Nav.Link>
             <Nav.Link href="#" as="span">
               {user
-                ? <em>{user} logged in</em>
-                : <Link to="/login">login</Link>
+                ? <em>{user} logged in {logout()}</em>
+                : <Link to="/login">Login</Link>
               }
           </Nav.Link>
           </Nav>

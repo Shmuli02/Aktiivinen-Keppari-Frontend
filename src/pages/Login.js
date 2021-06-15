@@ -5,6 +5,7 @@ import {
 import loginService from '../services/login'
 
 
+
 const Login = (props) => {
   const history = useHistory()
 
@@ -12,6 +13,9 @@ const Login = (props) => {
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
+
+
+  
 
   const handleLogin = async (event) => {
     event.preventDefault()
@@ -25,6 +29,7 @@ const Login = (props) => {
       setUser(user)
       setUsername('')
       setPassword('')
+      props.onLogin(username)
       history.push('/')
     } catch (exception) {
       setErrorMessage('wrong credentials')
@@ -33,6 +38,8 @@ const Login = (props) => {
       }, 5000)
     }
   }
+
+
 
   return (
     <div>
