@@ -123,7 +123,7 @@ const App = () => {
             <Nav.Link href="#" as="span">
               <Link style={padding} to="/users">Oma sivu</Link>
             </Nav.Link>
-            <Nav.Link href="#" as="span">
+            <Nav.Link href="/users" as="span">
               {user
                 ? <em>{user} logged in {logout()}</em>
                 : <Link to="/login">Login</Link>

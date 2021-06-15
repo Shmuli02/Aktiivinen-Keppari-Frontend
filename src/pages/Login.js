@@ -43,28 +43,27 @@ const Login = (props) => {
 
   return (
     <div>
-      <form onSubmit={handleLogin}>
-      <div>
-        username
-          <input
-          type="text"
-          value={username}
-          name="Username"
-          onChange={({ target }) => setUsername(target.value)}
-        />
-      </div>
-      <div>
-        password
-          <input
-          type="password"
-          value={password}
-          name="Password"
-          onChange={({ target }) => setPassword(target.value)}
-        />
-      </div>
-      <button type="submit">login</button>
-    </form>      
-    </div>
+      <form className="px-4 py-3" onSubmit={handleLogin}>
+        <div className="form-group">
+          <label>Username</label>
+          <input type="text" className="form-control" value={username} onChange={({ target }) => setUsername(target.value)} placeholder="Username"/>
+        </div>
+        <div className="form-group">
+          <label >Password</label>
+          <input type="password" className="form-control" value={password} onChange={({ target }) => setPassword(target.value)} placeholder="Password"/>
+        </div>
+        <div className="form-check">
+          <input type="checkbox" className="form-check-input" id="dropdownCheck"/>
+          <label className="form-check-label">
+            Remember me
+          </label>
+        </div>
+        <button type="submit" className="btn btn-primary">Login</button>
+      </form>
+      <div className="dropdown-divider"></div>
+      <a className="dropdown-item" href="#">New around here? Sign up</a>
+      <a className="dropdown-item" href="#">Forgot password?</a>
+  </div>
   )
 }
 

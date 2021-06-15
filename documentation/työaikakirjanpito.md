@@ -8,4 +8,5 @@
 | | 3 | frontin ulkoasun muokkaamista |
 | 15.6 | 1 | dokumentaatiota |
 | | 2 | login korjaus |
+| | 1 | login lomakkeen ulkoasun päivittäminen |
 
