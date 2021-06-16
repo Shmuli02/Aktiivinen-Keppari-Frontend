@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
-import Notes from './pages/Notes'
+import Task from './pages/Task'
 import Login from './pages/Login'
 import Home from './pages/Home'
+import User from './pages/User'
 
 
 import taskService from './services/tasks'
+import noteService from './services/notes'
 
 import ReactDOM from 'react-dom'
 import {Navbar, Nav} from 'react-bootstrap'
@@ -16,7 +18,6 @@ import {
   Link,
   Redirect,
   useParams,
-  useHistory,
 } from "react-router-dom"
 
 
@@ -33,63 +34,35 @@ const Note = ({ notes }) => {
   )
 }
 
-
-const Users = () => (
-  <div>
-    <h2>TKTL notes app</h2>
-    <ul>
-      <li>Matti Luukkainen</li>
-      <li>Juha Tauriainen</li>
-      <li>Arto Hellas</li>
-    </ul>
-  </div>
-)
-
-// const Login = (props) => {
-//   const history = useHistory()
-
-//   const onSubmit = (event) => {
-//     event.preventDefault()
-//     props.onLogin('mluukkai')
-//     history.push('/')
-//   }
-
-//   return (
-//     <div>
-//       <h2>login</h2>
-//       <form onSubmit={onSubmit}>
-//         <div>
-//           username: <input />
-//         </div>
-//         <div>
-//           password: <input type='password' />
-//         </div>
-//         <button type="submit">login</button>
-//       </form>
-//     </div>
-//   )
-// }
-
 const App = () => {
+  const [tasks, setTasks] = useState([])
+  const [user, setUser] = useState(null)
   const [notes, setNotes] = useState([])
-  const [user, setUser] = useState(null) 
   
-  useEffect(() => {
-    taskService.getAll().then(tasks => 
-      setNotes( tasks )
-      )
-  }, [])
-
-  useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
-    if (loggedUserJSON) {
-      const logUser = JSON.parse(loggedUserJSON)
-      setUser(logUser.username)
+  useEffect( () => {
+    async function getFunction() {
+      const tasks = await taskService.getAll()
+      setTasks( tasks )
     }
+    getFunction()
   }, [])
 
-  console.log(user)
 
+  useEffect(() => {
+    async function getData() {
+      const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
+      if (loggedUserJSON) {
+        const logUser = await JSON.parse(loggedUserJSON)
+        setUser(logUser.username)
+        const notes = await noteService.getAll()
+        const note2 = await notes.filter(note => note.user.username === logUser.username)
+        setNotes(note2)
+      }
+    }
+    getData()
+  }, [])
+
+  console.log(user,tasks,notes)
   const login = (user) => {
     setUser(user)
   }
@@ -101,6 +74,7 @@ const App = () => {
   const handleLogout = (enevt) => {
     window.localStorage.removeItem('loggedBlogappUser')
     setUser(null)
+    setNotes([])
   }
   
   const logout = () => (
@@ -118,12 +92,12 @@ const App = () => {
               <Link style={padding} to="/">Home</Link>
             </Nav.Link>
             <Nav.Link href="#" as="span">
-              <Link style={padding} to="/notes">Tehtävät</Link>
+              <Link style={padding} to="/task">Tehtävät</Link>
             </Nav.Link>
             <Nav.Link href="#" as="span">
-              <Link style={padding} to="/users">Oma sivu</Link>
+              <Link style={padding} to="/user">Oma sivu</Link>
             </Nav.Link>
-            <Nav.Link href="/users" as="span">
+            <Nav.Link href="/user" as="span">
               {user
                 ? <em>{user} logged in {logout()}</em>
                 : <Link to="/login">Login</Link>
@@ -134,14 +108,14 @@ const App = () => {
       </Navbar>
 
       <Switch>
-        <Route path="/notes/:id">
-          <Note notes={notes} />
+        <Route path="/tasks/:id">
+          <Note tasks={tasks} />
         </Route>
-        <Route path="/notes">
-          <Notes notes={notes} />
+        <Route path="/task">
+          <Task tasks={tasks} notes={notes} />
         </Route>
-        <Route path="/users">
-          {user ? <Users /> : <Redirect to="/login" />}
+        <Route path="/user">
+          {user ? <User notes={notes} /> : <Redirect to="/login" />}
         </Route>
         <Route path="/login">
           <Login onLogin={login} />

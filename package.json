@@ -16,6 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -38,5 +39,11 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3003"
+  "proxy": "http://localhost:3003",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "eslint": "^7.28.0",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.3"
+  }
 }
