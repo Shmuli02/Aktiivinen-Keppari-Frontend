@@ -21,19 +21,6 @@ import {
 } from "react-router-dom"
 
 
-
-const Note = ({ notes }) => {
-  const id = useParams().id
-  const note = notes.find(n => n.id === Number(id))
-  return (
-    <div>
-      <h2>{note.content}</h2>
-      <div>{note.user}</div>
-      <div><strong>{note.important ? 'tärkeä' : ''}</strong></div>
-    </div>
-  )
-}
-
 const App = () => {
   const [tasks, setTasks] = useState([])
   const [user, setUser] = useState(null)
@@ -108,11 +95,8 @@ const App = () => {
       </Navbar>
 
       <Switch>
-        <Route path="/tasks/:id">
-          <Note tasks={tasks} />
-        </Route>
         <Route path="/task">
-          <Task tasks={tasks} notes={notes} />
+          <Task tasks={tasks} notes={notes} user={user} />
         </Route>
         <Route path="/user">
           {user ? <User notes={notes} /> : <Redirect to="/login" />}

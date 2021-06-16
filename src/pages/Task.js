@@ -18,22 +18,25 @@ const handleNoteDelete = async (event) => {
   console.log(event)
 }
 
-const Tasks = ({tasks,notes}) => {
+const Tasks = ({tasks,notes,user}) => {
   const notesId = notes.map(note => note.task)
+
   return (
   <div>
     <h2>Tehtävät</h2>
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>Suoritukset</th>
+          {user ? <th>Suoritukset</th> : '' }
           <th>Tehtävä</th>
           <th>Haastavuus</th>
         </tr>
       </thead>
       <tbody>
+        
         {tasks.map(task =>
           <tr key={task._id}>
+            {user ? <div>
             <td>
               {notesId.includes(task._id) 
               ? <div><span class="badge badge-pill badge-success">Suoritettu</span> 
@@ -41,6 +44,7 @@ const Tasks = ({tasks,notes}) => {
               : <div><span class="badge badge-pill badge-secondary">Ei suoritettu</span>
               <button value={task._id} onClick={handleNewNote} class="badge badge-primary">Merkitse suoritus</button></div>}
             </td>
+            </div> : ''}
             <td>
               {task.title}
             </td>

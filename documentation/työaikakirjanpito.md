@@ -12,3 +12,4 @@
 | | 2 | backend muokkausta |
 | 16.6 | 3 | backend suoritusten kanta, moduuli ja käsittely lisätty |
 | | 2 | frontend omat suoritukse tehtävät sivulla |
+| | 1 | frontend tehtävä painikkeet | 
