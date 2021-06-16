@@ -9,4 +9,6 @@
 | 15.6 | 1 | dokumentaatiota |
 | | 2 | login korjaus |
 | | 1 | login lomakkeen ulkoasun päivittäminen |
-
+| | 2 | backend muokkausta |
+| 16.6 | 3 | backend suoritusten kanta, moduuli ja käsittely lisätty |
+| | 2 | frontend omat suoritukse tehtävät sivulla |
