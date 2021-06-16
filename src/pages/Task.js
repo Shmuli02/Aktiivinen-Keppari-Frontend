@@ -1,5 +1,22 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
+import noteService from '../services/notes'
+
+const handleNewNote = async (event) => {
+  const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
+  const logUser = await JSON.parse(loggedUserJSON)
+  console.log(event)
+  console.log(logUser.username)
+  noteService.setToken(logUser.token)
+  const note = await noteService.create({
+    task: event.target.value,
+    user: logUser.username
+  })
+}
+
+const handleNoteDelete = async (event) => {
+  console.log(event)
+}
 
 const Tasks = ({tasks,notes}) => {
   const notesId = notes.map(note => note.task)
@@ -16,13 +33,13 @@ const Tasks = ({tasks,notes}) => {
       </thead>
       <tbody>
         {tasks.map(task =>
-          <tr key={task.id}>
+          <tr key={task._id}>
             <td>
               {notesId.includes(task._id) 
               ? <div><span class="badge badge-pill badge-success">Suoritettu</span> 
-              <a href="#" class="badge badge-danger">poista suoritus</a></div>
+              <button value={task._id} onClick={handleNoteDelete} class="badge badge-danger">poista suoritus</button></div>
               : <div><span class="badge badge-pill badge-secondary">Ei suoritettu</span>
-              <a href="#" class="badge badge-primary">Merkitse suoritus</a></div>}
+              <button value={task._id} onClick={handleNewNote} class="badge badge-primary">Merkitse suoritus</button></div>}
             </td>
             <td>
               {task.title}
