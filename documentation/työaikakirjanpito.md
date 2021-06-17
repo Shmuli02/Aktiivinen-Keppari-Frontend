@@ -12,4 +12,7 @@
 | | 2 | backend muokkausta |
 | 16.6 | 3 | backend suoritusten kanta, moduuli ja käsittely lisätty |
 | | 2 | frontend omat suoritukse tehtävät sivulla |
-| | 1 | frontend tehtävä painikkeet | 
+| | 1 | frontend tehtävä painikkeet |
+| | 2 | registöröinti sivu |
+| 17.6 | 2 | backend notes id:n get, put ja delete listty|
+| | 4 | Tehtävät sivu muokkaus lomake ja ulkoasu |
