@@ -61,7 +61,7 @@ const Login = (props) => {
         <button type="submit" className="btn btn-primary">Login</button>
       </form>
       <div className="dropdown-divider"></div>
-      <a className="dropdown-item" href="#">New around here? Sign up</a>
+      <a className="dropdown-item" href="/register">New around here? Sign up</a>
       <a className="dropdown-item" href="#">Forgot password?</a>
   </div>
   )

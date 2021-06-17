@@ -4,6 +4,7 @@ import Task from './pages/Task'
 import Login from './pages/Login'
 import Home from './pages/Home'
 import User from './pages/User'
+import Register from './pages/Register'
 
 
 import taskService from './services/tasks'
@@ -95,6 +96,7 @@ const App = () => {
       </Navbar>
 
       <Switch>
+        
         <Route path="/task">
           <Task tasks={tasks} notes={notes} user={user} />
         </Route>
@@ -103,6 +105,9 @@ const App = () => {
         </Route>
         <Route path="/login">
           <Login onLogin={login} />
+        </Route>
+        <Route path="/register">
+          <Register />
         </Route>
         <Route path="/">
           <Home />
@@ -119,7 +124,7 @@ const App = () => {
 
 ReactDOM.render(
   <Router>
-  <App />
+    <App />
   </Router>,
   document.getElementById('root')
 )
