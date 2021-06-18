@@ -27,6 +27,7 @@ const App = () => {
   const [user, setUser] = useState(null)
   const [notes, setNotes] = useState([])
   
+  
   useEffect( () => {
     async function getFunction() {
       const tasks = await taskService.getAll()
@@ -34,6 +35,8 @@ const App = () => {
     }
     getFunction()
   }, [])
+
+
 
 
   useEffect(() => {
@@ -80,7 +83,7 @@ const App = () => {
               <Link style={padding} to="/">Home</Link>
             </Nav.Link>
             <Nav.Link href="#" as="span">
-              <Link style={padding} to="/task">Tehtävät</Link>
+              <Link style={padding} to="/tasks">Tehtävät</Link>
             </Nav.Link>
             <Nav.Link href="#" as="span">
               <Link style={padding} to="/user">Oma sivu</Link>
@@ -97,7 +100,7 @@ const App = () => {
 
       <Switch>
         
-        <Route path="/task">
+        <Route path="/tasks">
           <Task tasks={tasks} notes={notes} user={user} />
         </Route>
         <Route path="/user">

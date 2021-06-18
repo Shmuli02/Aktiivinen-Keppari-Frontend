@@ -1,14 +1,26 @@
 import React, {useState, useEffect} from 'react'
+import userService from '../services/user'
 
-const handleRegister = (event) => {
-  
-}
 
-const Register = (props) => {
+function Register(props) {
+
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password1, setPassword1] = useState('')
   const [password2, setPassword2] = useState('')
+  const [firstname, setFirstName] = useState('')
+  const [lastname, setLastName] = useState('')
+
+  const handleRegister = async (event) => {
+    const user = await userService.register({
+      username: username,
+      firstname: firstname,
+      lastname: lastname,
+      email: email,
+      password: password1
+    })
+    window.location.href = "/login"
+  }
 
   return (
     <div>
@@ -16,6 +28,12 @@ const Register = (props) => {
         <div className="form-group">
           <label>Käyttäjänimi</label>
           <input type="text" className="form-control" value={username} onChange={({ target }) => setUsername(target.value)} placeholder="Käyttäjänimi" />
+        </div>
+        <div className="form-group">
+          <label>Etunimi</label>
+          <input type="text" className="form-control" value={firstname} onChange={({ target }) => setFirstName(target.value)} placeholder="Etunimi" />
+          <label>Sukunimi</label>
+          <input type="text" className="form-control" value={lastname} onChange={({ target }) => setLastName(target.value)} placeholder="ukunimi" />
         </div>
         <div className="form-group">
           <label>Sähköposti</label>

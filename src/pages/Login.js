@@ -52,12 +52,6 @@ const Login = (props) => {
           <label >Password</label>
           <input type="password" className="form-control" value={password} onChange={({ target }) => setPassword(target.value)} placeholder="Password"/>
         </div>
-        <div className="form-check">
-          <input type="checkbox" className="form-check-input" id="dropdownCheck"/>
-          <label className="form-check-label">
-            Remember me
-          </label>
-        </div>
         <button type="submit" className="btn btn-primary">Login</button>
       </form>
       <div className="dropdown-divider"></div>
