@@ -1,16 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Table } from 'react-bootstrap'
 import noteService from '../services/notes'
 import {EditNoteForm, NewNoteForm} from '../components/Note'
 import Badge from 'react-bootstrap/Badge'
+import Timer from '../components/Timer'
+import Notification from '../components/Notification'
 
 
 
 const Tasks = ({tasks,notes,user}) => {
   const notesId = notes.map(note => note.task)
+  const [errorMessage, setErrorMessage] = useState(null)
+
   return (
   <div>
-    <h2>Tehtävät</h2>
+    <h1>Tehtävät</h1>
+    <Notification message={errorMessage} />
+    <br></br>
+    <h2>Aikaa jäljellä</h2>
+    <Timer />
     <Table striped bordered hover>
       <thead>
         <tr>

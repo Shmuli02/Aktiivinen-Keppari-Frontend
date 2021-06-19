@@ -3,6 +3,7 @@ import {
   useHistory
 } from "react-router-dom"
 import loginService from '../services/login'
+import Notification from '../components/Notification'
 
 
 
@@ -32,7 +33,7 @@ const Login = (props) => {
       props.onLogin(username)
       history.push('/')
     } catch (exception) {
-      setErrorMessage('wrong credentials')
+      setErrorMessage('Väärä käyttäjätunnus tai salasana')
       setTimeout(() => {
         setErrorMessage(null)
       }, 5000)
@@ -43,6 +44,7 @@ const Login = (props) => {
 
   return (
     <div>
+      <Notification message={errorMessage} />
       <form className="px-4 py-3" onSubmit={handleLogin}>
         <div className="form-group">
           <label>Username</label>

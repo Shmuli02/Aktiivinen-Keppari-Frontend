@@ -47,14 +47,12 @@ const App = () => {
         const logUser = await JSON.parse(loggedUserJSON)
         setUser(logUser.username)
       const notes = await getNotes()
-      console.log(notes)
       setNotes(notes)
       }
     }
     getData()
   }, [])
 
-  console.log(user,tasks,notes)
   const login = (user) => {
     setUser(user)
   }
@@ -104,7 +102,7 @@ const App = () => {
       <Switch>
         
         <Route path="/tasks">
-          <Task tasks={tasks} notes={notes} user={user}/>
+          <Task tasks={tasks} user={user} notes={notes}/>
         </Route>
         <Route path="/user">
           {user ? <User notes={notes} /> : <Redirect to="/login" />}
