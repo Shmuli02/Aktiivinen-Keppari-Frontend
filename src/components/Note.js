@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Badge from 'react-bootstrap/Badge'
 import noteService from '../services/notes'
+import Upload from './Upload'
 
 function EditNoteForm({taskId,note}) {
   const [show, setShow] = useState(false);
@@ -87,7 +88,7 @@ function NewNoteForm(taskId) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  
   const handleNewNote = async (event) => {
     const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
     const logUser = await JSON.parse(loggedUserJSON)
@@ -118,12 +119,13 @@ function NewNoteForm(taskId) {
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Suoritus
+          <Col>
+          <Form.Label>Lataa tiedosto tai lisää linkki</Form.Label>
+            <Upload taskId={taskId}/>
             <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Linkki</Form.Label>
-              <Form.Control as="textarea" rows={2} onChange={handleUrlChange} value={url} />
+              <Form.Control as="textarea" rows={2} onChange={handleUrlChange} value={url} placeholder="linkki"/>
             </Form.Group>
-
+            </Col>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

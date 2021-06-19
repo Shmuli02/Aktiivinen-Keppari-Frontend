@@ -74,6 +74,7 @@ const App = () => {
 
   return (
     <div>
+      
     <Router>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -114,13 +115,17 @@ const App = () => {
         </Route>
         <Route path="/">
           <Home />
+
         </Route>
       </Switch>
     </Router>      
       <div>
+        <div>
+      </div>
         <br />
         <em>Sivujen toteutus: Mitavain</em>
       </div>
+      
     </div>
   )
 }

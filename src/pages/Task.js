@@ -44,7 +44,7 @@ const Tasks = ({tasks,notes,user}) => {
               ? <EditNoteForm taskId={task._id} note={notes.filter(function(note) {
                 return note.task == task._id
               })}/>
-              : <NewNoteForm taskId={task._id}/> 
+              : <NewNoteForm taskId={task._id} user={user}/> 
               }
             </td> : ''}
           </tr>
