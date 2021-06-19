@@ -10,6 +10,8 @@ import Register from './pages/Register'
 import taskService from './services/tasks'
 import noteService from './services/notes'
 
+import { getNotes } from './components/Note'
+
 import ReactDOM from 'react-dom'
 import {Navbar, Nav} from 'react-bootstrap'
 import {
@@ -38,16 +40,15 @@ const App = () => {
 
 
 
-
   useEffect(() => {
     async function getData() {
       const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
       if (loggedUserJSON) {
         const logUser = await JSON.parse(loggedUserJSON)
         setUser(logUser.username)
-        const notes = await noteService.getAll()
-        const note2 = await notes.filter(note => note.user.username === logUser.username)
-        setNotes(note2)
+      const notes = await getNotes()
+      console.log(notes)
+      setNotes(notes)
       }
     }
     getData()
@@ -71,6 +72,7 @@ const App = () => {
   const logout = () => (
     <button onClick={handleLogout}>Logout</button>
   )
+
 
   return (
     <div>
@@ -102,7 +104,7 @@ const App = () => {
       <Switch>
         
         <Route path="/tasks">
-          <Task tasks={tasks} notes={notes} user={user} />
+          <Task tasks={tasks} notes={notes} user={user}/>
         </Route>
         <Route path="/user">
           {user ? <User notes={notes} /> : <Redirect to="/login" />}

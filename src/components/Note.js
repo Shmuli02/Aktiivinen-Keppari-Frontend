@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useCallback, useState} from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
@@ -7,7 +7,7 @@ import Badge from 'react-bootstrap/Badge'
 import noteService from '../services/notes'
 import Upload from './Upload'
 
-function EditNoteForm({taskId,note}) {
+function EditNoteForm({taskId,note,onNoteChange}) {
   const [show, setShow] = useState(false);
   const noteToEdit = note[0]
   const [url, setUrl] = useState(noteToEdit.url)
@@ -108,6 +108,7 @@ function NewNoteForm(taskId) {
   const handleUrlChange = (e) => setUrl(e.target.value)
 
 
+
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -140,7 +141,18 @@ function NewNoteForm(taskId) {
   );
 }
 
+async function getNotes() {
+  const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
+  if (loggedUserJSON) {
+    const logUser = await JSON.parse(loggedUserJSON)
+    const notes = await noteService.getAll()
+    const note2 = await notes.filter(note => note.user.username === logUser.username)
+    return note2
+  }
+}
+
 export  {
   EditNoteForm,
-  NewNoteForm
+  NewNoteForm,
+  getNotes
 }
