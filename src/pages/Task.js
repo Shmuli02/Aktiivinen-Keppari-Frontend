@@ -19,6 +19,7 @@ const Tasks = ({tasks,notes,user}) => {
     <br></br>
     <h2>Aikaa jäljellä</h2>
     <Timer />
+    <br></br>
     <Table striped bordered hover>
       <thead>
         <tr>

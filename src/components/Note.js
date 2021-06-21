@@ -6,6 +6,9 @@ import Col from 'react-bootstrap/Col'
 import Badge from 'react-bootstrap/Badge'
 import noteService from '../services/notes'
 import Upload from './Upload'
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import UploadFiles from "../components/upload-files";
 
 function EditNoteForm({taskId,note,onNoteChange}) {
   const [show, setShow] = useState(false);
@@ -122,7 +125,9 @@ function NewNoteForm(taskId) {
         <Modal.Body>
           <Col>
           <Form.Label>Lataa tiedosto tai lisää linkki</Form.Label>
-            <Upload taskId={taskId}/>
+            <div className="container" style={{ width: "300" }}>
+              <UploadFiles />
+            </div>
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Control as="textarea" rows={2} onChange={handleUrlChange} value={url} placeholder="linkki"/>
             </Form.Group>
