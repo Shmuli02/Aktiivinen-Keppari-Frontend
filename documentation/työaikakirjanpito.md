@@ -20,3 +20,7 @@
 | | 4 | Amazon S3 liittäminen ohjelmaan |
 | 19.6 | 2 | mahdollisuus ladata tiedostoja tehtävissä |
 | | 2 | refaktorointia
+| | 1 | ilmoitukset | 
+| | 1 | countdown laskuri |
+| | 2 | backend post hoiamaan aws s3 lataukset |
+| 20.6 | 4 | Frontendiin lataus mahdollisuus ja latausbaari |
