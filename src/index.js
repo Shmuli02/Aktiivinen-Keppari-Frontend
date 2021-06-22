@@ -75,7 +75,6 @@ const App = () => {
   return (
     <div>
       
-    <Router>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -117,8 +116,7 @@ const App = () => {
           <Home />
 
         </Route>
-      </Switch>
-    </Router>      
+      </Switch>    
       <div>
         <div>
       </div>
