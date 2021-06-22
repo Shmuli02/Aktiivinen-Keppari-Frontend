@@ -81,18 +81,18 @@ const App = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="#" as="span">
-              <Link style={padding} to="/">Home</Link>
+              <Link to="/">Home</Link>
             </Nav.Link>
             <Nav.Link href="#" as="span">
-              <Link style={padding} to="/tasks">Tehtävät</Link>
+              <Link to="/tasks">Tehtävät</Link>
             </Nav.Link>
             <Nav.Link href="#" as="span">
-              <Link style={padding} to="/user">Oma sivu</Link>
+              <Link to="/user">Oma sivu</Link>
             </Nav.Link>
             <Nav.Link href="/user" as="span">
               {user
                 ? <em>{user} logged in {logout()}</em>
-                : <Link to="/login">Login</Link>
+                : <Link to="/login" >Login</Link>
               }
           </Nav.Link>
           </Nav>
