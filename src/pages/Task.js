@@ -37,7 +37,7 @@ const Tasks = ({tasks,notes,user}) => {
             <td>
               {notesId.includes(task._id) 
               ? <Badge pill variant="success">Suoritettu</Badge>
-              : <Badge pill variant="light">Ei suoritettu</Badge>
+              : <Badge pill variant="dark">Ei suoritettu</Badge>
               }
             </td> : '' }
             
