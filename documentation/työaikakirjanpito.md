@@ -24,3 +24,9 @@
 | | 1 | countdown laskuri |
 | | 2 | backend post hoiamaan aws s3 lataukset |
 | 20.6 | 4 | Frontendiin lataus mahdollisuus ja latausbaari |
+| 21.6 | 1 | ohjeet etusivulle |
+| | 1 | aws käyttäjien oikeudet |
+| 22.6 | 3 | react router ja heroku ongelman selvittämistä |
+| 28.6 | 1 | kirjautumis ja rekistöröinti lomakkeen muokkaamista |
+| | 3 | frontend omat sivut |
+| | 3 | backend diplomi lisätty |
