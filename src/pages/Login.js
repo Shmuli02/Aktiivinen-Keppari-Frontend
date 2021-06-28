@@ -48,11 +48,11 @@ const Login = (props) => {
       <form className="px-4 py-3" onSubmit={handleLogin}>
         <div className="form-group">
           <label>Username</label>
-          <input type="text" className="form-control" value={username} onChange={({ target }) => setUsername(target.value)} placeholder="Username"/>
+          <input type="text" autoComplete="username" className="form-control" value={username} onChange={({ target }) => setUsername(target.value)} placeholder="Username"/>
         </div>
         <div className="form-group">
           <label >Password</label>
-          <input type="password" className="form-control" value={password} onChange={({ target }) => setPassword(target.value)} placeholder="Password"/>
+          <input type="password" autoComplete="current-password" className="form-control" value={password} onChange={({ target }) => setPassword(target.value)} placeholder="Password"/>
         </div>
         <button type="submit" className="btn btn-primary">Login</button>
       </form>
