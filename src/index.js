@@ -74,7 +74,7 @@ const App = () => {
 
   return (
     <div>
-      <Navbar expand="lg" bg="light" >
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
@@ -122,7 +122,6 @@ const App = () => {
         <br />
         <em>Sivujen toteutus: Mitavain</em>
       </div>
-      
     </div>
   )
 }
