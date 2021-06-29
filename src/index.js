@@ -13,7 +13,7 @@ import noteService from './services/notes'
 import { getNotes } from './components/Note'
 
 import ReactDOM from 'react-dom'
-import {Navbar, Nav} from 'react-bootstrap'
+import {Navbar, Nav, NavDropdown} from 'react-bootstrap'
 import {
   BrowserRouter as Router,
   Switch,
@@ -74,24 +74,23 @@ const App = () => {
 
   return (
     <div>
-      
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar expand="lg" bg="light" >
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="#" as="span">
-              <Link to="/">Home</Link>
+              <Link to="/" className="link">Home</Link>
             </Nav.Link>
             <Nav.Link href="#" as="span">
-              <Link to="/tasks">Tehtävät</Link>
+              <Link to="/tasks" className="link">Tehtävät</Link>
             </Nav.Link>
             <Nav.Link href="#" as="span">
-              <Link to="/user">Oma sivu</Link>
+              <Link to="/user" className="link">Oma sivu</Link>
             </Nav.Link>
             <Nav.Link href="/user" as="span">
               {user
                 ? <em>{user} logged in {logout()}</em>
-                : <Link to="/login" >Login</Link>
+                : <Link to="/login" className="link" >Login</Link>
               }
           </Nav.Link>
           </Nav>
