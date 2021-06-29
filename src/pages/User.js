@@ -15,8 +15,8 @@ const User = ({tasks,user,notes}) => {
     <p>suoritettu {userTasksLenght}/{taskLenght} tehtävää</p>
     {taskLenght == userTasksLenght ? 
     <div>
-      <p>Olet suorittanut kaikki tehtävät</p>
-      <b>Tilanne: </b><Badge variant="info">Tarkistus</Badge>
+      <p>Olet suorittanut kaikki tehtävät <Badge variant="info">Tarkistuksessa</Badge></p>
+      {/* <b>Tilanne: </b><Badge variant="info">Tarkistus</Badge> */}
       <p>Voit ladata diplomin tämän linkin kautta 
       <Button variant="primary" size="sm">
       Lataa diplomi
