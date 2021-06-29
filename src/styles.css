@@ -4,6 +4,15 @@
   font-family: sans-serif;
   text-align: center;
   padding-top: 40px;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  
+}
+@media only screen and (max-width: 600px) {
+  .TimerSec {
+    display: none;
+  }
 }
 
 .time {

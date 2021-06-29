@@ -1,3 +1,5 @@
+// https://codesandbox.io/s/musing-davinci-mqssz?fontsize=14&hidenavigation=1&theme=dark
+
 import React from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import '../styles.css'
@@ -73,7 +75,8 @@ export default function Timer() {
           renderTime("minuuttia", getTimeMinutes(hourSeconds - elapsedTime))
         }
       </CountdownCircleTimer>
-      <CountdownCircleTimer
+      <div className="TimerSec">
+      <CountdownCircleTimer 
         {...timerProps}
         colors={[["#218380"]]}
         duration={minuteSeconds}
@@ -86,6 +89,7 @@ export default function Timer() {
           renderTime("sekunttia", getTimeSeconds(elapsedTime))
         }
       </CountdownCircleTimer>
+      </div>
     </div>
   );
 }
