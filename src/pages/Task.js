@@ -1,16 +1,37 @@
 import React, {useState} from 'react'
-import { Table } from 'react-bootstrap'
+import { Table, Button, OverlayTrigger,Tooltip, Image, Popover } from 'react-bootstrap'
 import noteService from '../services/notes'
 import {EditNoteForm, NewNoteForm} from '../components/Note'
 import Badge from 'react-bootstrap/Badge'
 import Timer from '../components/Timer'
 import Notification from '../components/Notification'
-
+import {IconContext} from "react-icons"
+import { BsFillQuestionCircleFill } from "react-icons/bs";
 
 
 const Tasks = ({tasks,notes,user}) => {
   const notesId = notes.map(note => note.task)
   const [errorMessage, setErrorMessage] = useState(null)
+
+
+
+  const Info = ({title, description}) => (
+    <OverlayTrigger trigger="click" placement="right" overlay={
+      <Popover id="popover-basic">
+      <Popover.Title as="h3">{title}</Popover.Title>
+      <Popover.Content>
+      {description}
+      </Popover.Content>
+    </Popover>
+    }>
+      <Button variant="link">
+      <IconContext.Provider  value={{ style: {fontSize: '20px', color: "rgb(0, 0, 0)"}}}>
+        <BsFillQuestionCircleFill />
+    </IconContext.Provider>
+      </Button>
+      
+    </OverlayTrigger>
+  );
 
   return (
   <div>
@@ -42,7 +63,9 @@ const Tasks = ({tasks,notes,user}) => {
             </td> : '' }
             
             <td>
-              {task.title}
+            <Info title={task.title} description={task.description}/> 
+            {task.title}
+            
             </td>
             <td>
               {task.difficulty}
