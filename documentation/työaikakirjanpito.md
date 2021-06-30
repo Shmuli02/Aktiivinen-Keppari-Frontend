@@ -30,3 +30,11 @@
 | 28.6 | 1 | kirjautumis ja rekistöröinti lomakkeen muokkaamista |
 | | 3 | frontend omat sivut |
 | | 3 | backend diplomi lisätty |
+| 29.6 | 2 | navbar muokkaus |
+| | 0.5 | Tehtävien aikaa jäljellä mobiililaitteen ulkoasu |
+| | 1 | Google analytics |
+| | 3 | email server |
+| 30.6 | 2 | tehtäville info nappi |
+| | 1 | tehtävien luonti |
+| | 1 | merkintöjen automaattinen päivitys kun muutos merkintöihin |
+| | 3 | pieniä muutoksia |
