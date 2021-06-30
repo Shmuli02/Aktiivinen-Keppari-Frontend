@@ -10,7 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import UploadFiles from "../components/upload-files";
 
-function EditNoteForm({taskId,note,onNoteChange}) {
+function EditNoteForm({taskId,note,handleNoteChange}) {
   const [show, setShow] = useState(false);
   const noteToEdit = note[0]
   const [url, setUrl] = useState(noteToEdit.url)
@@ -38,6 +38,7 @@ function EditNoteForm({taskId,note,onNoteChange}) {
     console.log(noteToEdit)
     noteService.setToken(logUser.token)
     noteService.deleteNote(noteToEdit.id)
+    handleNoteChange()
     handleClose()
 
   }
@@ -56,7 +57,6 @@ function EditNoteForm({taskId,note,onNoteChange}) {
         </Modal.Header>
         <Modal.Body>
           <Col>
-            Woohoo, you're reading this text in a modal!
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Label>Linkki</Form.Label>
               <Form.Control as="textarea" rows={2} onChange={handleUrlChange} value={url} />
@@ -85,7 +85,7 @@ function EditNoteForm({taskId,note,onNoteChange}) {
 }
 
 
-function NewNoteForm(taskId) {
+function NewNoteForm({taskId,handleNoteChange}) {
   const [show, setShow] = useState(false);
   const [url, setUrl] = useState('')
 
@@ -95,16 +95,13 @@ function NewNoteForm(taskId) {
   const handleNewNote = async (event) => {
     const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
     const logUser = await JSON.parse(loggedUserJSON)
-    console.log(event)
-    console.log(taskId.taskId)
-    console.log(logUser.username)
-    console.log(url)
     noteService.setToken(logUser.token)
     const note = await noteService.create({
-      task: taskId.taskId,
+      task: taskId,
       user: logUser.username,
       url: url
     })
+    handleNoteChange()
     handleClose()
   }
   

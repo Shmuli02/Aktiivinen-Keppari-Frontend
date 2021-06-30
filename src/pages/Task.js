@@ -9,10 +9,9 @@ import {IconContext} from "react-icons"
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 
 
-const Tasks = ({tasks,notes,user}) => {
+const Tasks = ({tasks,notes,user,handleNoteChange}) => {
   const notesId = notes.map(note => note.task)
   const [errorMessage, setErrorMessage] = useState(null)
-
 
 
   const Info = ({title, description}) => (
@@ -53,10 +52,11 @@ const Tasks = ({tasks,notes,user}) => {
       <tbody>
         
         {tasks.map(task =>
-          <tr key={task._id}>
+          <tr key={task.id}>
             {user ?
             <td>
-              {notesId.includes(task._id) 
+              
+              {notesId.includes(task.id) 
               ? <Badge pill variant="success">Suoritettu</Badge>
               : <Badge pill variant="dark">Ei suoritettu</Badge>
               }
@@ -72,11 +72,11 @@ const Tasks = ({tasks,notes,user}) => {
             </td>
             {user ?
             <td>
-              {notesId.includes(task._id) 
-              ? <EditNoteForm taskId={task._id} note={notes.filter(function(note) {
-                return note.task == task._id
+              {notesId.includes(task.id) 
+              ? <EditNoteForm taskId={task.id} handleNoteChange={handleNoteChange}  note={notes.filter(function(note) {
+                return note.task == task.id
               })}/>
-              : <NewNoteForm taskId={task._id} user={user}/> 
+              : <NewNoteForm taskId={task.id} handleNoteChange={handleNoteChange} user={user}/> 
               }
             </td> : ''}
           </tr>

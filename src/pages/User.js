@@ -4,7 +4,7 @@ import {EditNoteForm, NewNoteForm} from '../components/Note'
 
 const User = ({tasks,user,notes}) => {
   const notesId = notes.map(note => note.task)
-  const userTasks = tasks.filter(task => notesId.includes(task._id))
+  const userTasks = tasks.filter(task => notesId.includes(task.id))
   const taskLenght = tasks.length
   const userTasksLenght = userTasks.length
 
@@ -38,14 +38,14 @@ const User = ({tasks,user,notes}) => {
       <tbody>
         
         {userTasks.map(task =>
-          <tr key={task._id}>
+          <tr key={task.id}>
             <td>
               {task.title}
             </td>
             <td>
-              {notesId.includes(task._id) 
-              ? <EditNoteForm taskId={task._id} note={notes.filter(function(note) {
-                return note.task == task._id
+              {notesId.includes(task.id) 
+              ? <EditNoteForm taskId={task.id} note={notes.filter(function(note) {
+                return note.task == task.id
               })}/>
               : '' }
             </td>

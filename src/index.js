@@ -30,26 +30,25 @@ const App = () => {
   const [notes, setNotes] = useState([])
   
   
-  useEffect( () => {
-    async function getFunction() {
-      const tasks = await taskService.getAll()
-      setTasks( tasks )
+
+  async function getFunction() {
+    const tasks = await taskService.getAll()
+    setTasks( tasks )
+  }
+  async function getData() {
+    const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
+    if (loggedUserJSON) {
+      const logUser = await JSON.parse(loggedUserJSON)
+      setUser(logUser.username)
+    const notes = await getNotes()
+    setNotes(notes)
     }
+  }
+  useEffect( () => {
     getFunction()
   }, [])
 
-
-
   useEffect(() => {
-    async function getData() {
-      const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
-      if (loggedUserJSON) {
-        const logUser = await JSON.parse(loggedUserJSON)
-        setUser(logUser.username)
-      const notes = await getNotes()
-      setNotes(notes)
-      }
-    }
     getData()
   }, [])
 
@@ -65,6 +64,10 @@ const App = () => {
     window.localStorage.removeItem('loggedBlogappUser')
     setUser(null)
     setNotes([])
+  }
+
+  const handleNotesChange = async (event) => {
+    getData()
   }
   
   const logout = () => (
@@ -100,7 +103,7 @@ const App = () => {
       <Switch>
         
         <Route path="/tasks">
-          <Task tasks={tasks} user={user} notes={notes}/>
+          <Task tasks={tasks} user={user} notes={notes} handleNoteChange={handleNotesChange}/>
         </Route>
         <Route path="/user">
           {user ? <User notes={notes} user={user} tasks={tasks}/> : <Redirect to="/login" />}
