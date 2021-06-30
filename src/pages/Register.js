@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import userService from '../services/user'
 import Notification from '../components/Notification'
+import { Redirect } from 'react-router'
 
 
 function Register(props) {
@@ -14,20 +15,27 @@ function Register(props) {
   const [errorMessage, setErrorMessage] = useState(null)
 
   const handleRegister = async (event) => {
+    event.preventDefault()
+
     if (password1 === password2) {
+      try {
       const user = await userService.register({
         username: username,
         firstname: firstname,
         lastname: lastname,
         email: email,
         password: password1
-
       })
-    
+      setErrorMessage(null)
+      } catch (exception) {
+        event.preventDefault()
+        setErrorMessage('Ongelma')
+        
+      }
     } else {
       setErrorMessage('Salasanat eivät täsmää')
       event.preventDefault()
-  }
+  } 
 }
 
   return (
