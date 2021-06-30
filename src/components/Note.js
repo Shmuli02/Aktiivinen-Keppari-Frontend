@@ -35,7 +35,6 @@ function EditNoteForm({taskId,note,handleNoteChange}) {
   const handleDelete = async () => {
     const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
     const logUser = await JSON.parse(loggedUserJSON)
-    console.log(noteToEdit)
     noteService.setToken(logUser.token)
     noteService.deleteNote(noteToEdit.id)
     handleNoteChange()

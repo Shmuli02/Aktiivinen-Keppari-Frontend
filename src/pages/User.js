@@ -2,7 +2,7 @@ import React from 'react'
 import { ProgressBar, Table, Badge, Button } from 'react-bootstrap'
 import {EditNoteForm, NewNoteForm} from '../components/Note'
 
-const User = ({tasks,user,notes}) => {
+const User = ({tasks,user,notes,handleNoteChange}) => {
   const notesId = notes.map(note => note.task)
   const userTasks = tasks.filter(task => notesId.includes(task.id))
   const taskLenght = tasks.length
@@ -44,7 +44,7 @@ const User = ({tasks,user,notes}) => {
             </td>
             <td>
               {notesId.includes(task.id) 
-              ? <EditNoteForm taskId={task.id} note={notes.filter(function(note) {
+              ? <EditNoteForm taskId={task.id} handleNoteChange={handleNoteChange} note={notes.filter(function(note) {
                 return note.task == task.id
               })}/>
               : '' }

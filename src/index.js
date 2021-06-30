@@ -106,7 +106,7 @@ const App = () => {
           <Task tasks={tasks} user={user} notes={notes} handleNoteChange={handleNotesChange}/>
         </Route>
         <Route path="/user">
-          {user ? <User notes={notes} user={user} tasks={tasks}/> : <Redirect to="/login" />}
+          {user ? <User notes={notes} handleNoteChange={handleNotesChange} user={user} tasks={tasks}/> : <Redirect to="/login" />}
         </Route>
         <Route path="/login">
           <Login onLogin={login} />
