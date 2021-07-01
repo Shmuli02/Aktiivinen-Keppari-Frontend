@@ -45,7 +45,7 @@ const Tasks = ({tasks,notes,user,handleNoteChange}) => {
         <tr>
           {user ? <th>Suoritukset</th> : '' }
           <th>Tehtävä</th>
-          <th>Haastavuus</th>
+          {/* <th>Haastavuus</th> */}
           {user ? <th>Muokkaus</th> : '' }
         </tr>
       </thead>
@@ -67,9 +67,9 @@ const Tasks = ({tasks,notes,user,handleNoteChange}) => {
             {task.title}
             
             </td>
-            <td>
+            {/* <td>
               {task.difficulty}
-            </td>
+            </td> */}
             {user ?
             <td>
               {notesId.includes(task.id) 
