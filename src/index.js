@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Home from './pages/Home'
 import User from './pages/User'
 import Register from './pages/Register'
+import ImageGallery from './pages/Gallery'
 
 
 import taskService from './services/tasks'
@@ -90,12 +91,16 @@ const App = () => {
             <Nav.Link href="#" as="span">
               <Link to="/user" className="link">Oma sivu</Link>
             </Nav.Link>
+            <Nav.Link href="#" as="span">
+              <Link to="/gallery" className="link">Galleria</Link>
+            </Nav.Link>
             <Nav.Link href="/user" as="span">
               {user
                 ? <em>{user} logged in {logout()}</em>
                 : <Link to="/login" className="link" >Login</Link>
               }
           </Nav.Link>
+          
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -114,14 +119,15 @@ const App = () => {
         <Route path="/register">
           <Register />
         </Route>
+        <Route path="/gallery">
+          <ImageGallery />
+        </Route>
         <Route path="/">
           <Home />
 
         </Route>
       </Switch>    
       <div>
-        <div>
-      </div>
         <br />
         <em>Sivujen toteutus: Mitavain</em>
       </div>
