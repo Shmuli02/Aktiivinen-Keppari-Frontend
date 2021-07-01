@@ -2,10 +2,13 @@ import React, {useState, useEffect} from 'react'
 import userService from '../services/user'
 import Notification from '../components/Notification'
 import { Redirect } from 'react-router'
+import {
+  useHistory
+} from "react-router-dom"
 
 
-function Register(props) {
-
+const Register = (props) => {
+  const history = useHistory()
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password1, setPassword1] = useState('')
@@ -16,6 +19,7 @@ function Register(props) {
 
   const handleRegister = async (event) => {
     event.preventDefault()
+   
 
     if (password1 === password2) {
       try {
@@ -26,7 +30,7 @@ function Register(props) {
         email: email,
         password: password1
       })
-      setErrorMessage(null)
+      history.push('/login')
       } catch (exception) {
         event.preventDefault()
         setErrorMessage('Ongelma')
