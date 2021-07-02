@@ -54,6 +54,7 @@ const App = () => {
   }, [])
 
   const login = (user) => {
+    getData()
     setUser(user)
   }
 

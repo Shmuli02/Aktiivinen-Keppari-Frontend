@@ -84,7 +84,7 @@ function EditNoteForm({taskId,note,handleNoteChange}) {
 }
 
 
-function NewNoteForm({taskId,handleNoteChange}) {
+function NewNoteForm({taskId,handleNoteChange,user}) {
   const [show, setShow] = useState(false);
   const [url, setUrl] = useState('')
 
@@ -122,7 +122,7 @@ function NewNoteForm({taskId,handleNoteChange}) {
           <Col>
           <Form.Label>Lataa tiedosto tai lisää linkki</Form.Label>
             <div className="container" style={{ width: "300" }}>
-              <UploadFiles />
+              <UploadFiles user={user}/>
             </div>
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Control as="textarea" rows={2} onChange={handleUrlChange} value={url} placeholder="linkki"/>

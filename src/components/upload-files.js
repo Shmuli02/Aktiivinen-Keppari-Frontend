@@ -8,7 +8,6 @@ export default class UploadFiles extends Component {
     super(props);
     this.selectFile = this.selectFile.bind(this);
     this.upload = this.upload.bind(this);
-
     this.state = {
       selectedFiles: undefined,
       currentFile: undefined,
@@ -33,7 +32,7 @@ export default class UploadFiles extends Component {
       currentFile: currentFile,
     });
 
-    UploadService.upload(currentFile, (event) => {
+    UploadService.upload(currentFile, this.props.user, (event) => {
       this.setState({
         progress: Math.round((100 * event.loaded) / event.total),
       });
