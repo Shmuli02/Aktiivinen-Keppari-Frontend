@@ -10,6 +10,7 @@ import ImageGallery from './pages/Gallery'
 
 import taskService from './services/tasks'
 import noteService from './services/notes'
+import imageService from './services/images'
 
 import { getNotes } from './components/Note'
 
@@ -29,8 +30,12 @@ const App = () => {
   const [tasks, setTasks] = useState([])
   const [user, setUser] = useState(null)
   const [notes, setNotes] = useState([])
+  const [images, setImages] = useState([])
   
-  
+  async function getImages() {
+    const images = await imageService.getAll()
+    setImages(images)
+  }
 
   async function getFunction() {
     const tasks = await taskService.getAll()
@@ -45,6 +50,10 @@ const App = () => {
     setNotes(notes)
     }
   }
+  useEffect( () => {
+    getImages()
+  },[])
+
   useEffect( () => {
     getFunction()
   }, [])
@@ -121,7 +130,7 @@ const App = () => {
           <Register />
         </Route>
         <Route path="/gallery">
-          <ImageGallery />
+          <ImageGallery images={images}/>
         </Route>
         <Route path="/">
           <Home />
