@@ -87,6 +87,7 @@ function EditNoteForm({taskId,note,handleNoteChange}) {
 function NewNoteForm({taskId,handleNoteChange,user}) {
   const [show, setShow] = useState(false);
   const [url, setUrl] = useState('')
+  const [allowedToPublish, setAllowedToPublish] = useState(false)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -98,15 +99,18 @@ function NewNoteForm({taskId,handleNoteChange,user}) {
     const note = await noteService.create({
       task: taskId,
       user: logUser.username,
-      url: url
+      url: url,
+      allowedToPublish: allowedToPublish
+
     })
     handleNoteChange()
+    setAllowedToPublish(false)
     handleClose()
   }
   
   const handleUrlChange = (e) => setUrl(e.target.value)
 
-
+  const handleCheckChange = (e) => setAllowedToPublish(e.target.checked)
 
   return (
     <>
@@ -127,6 +131,10 @@ function NewNoteForm({taskId,handleNoteChange,user}) {
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Control as="textarea" rows={2} onChange={handleUrlChange} value={url} placeholder="linkki"/>
             </Form.Group>
+            <Form.Group id="formGridCheckbox">
+              <Form.Check type="checkbox" label="kuvan/videon saa julkaista galleriassa"  onChange={handleCheckChange}/>
+            </Form.Group>
+
             </Col>
         </Modal.Body>
         <Modal.Footer>
