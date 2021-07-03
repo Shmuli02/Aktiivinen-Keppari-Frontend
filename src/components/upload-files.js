@@ -12,7 +12,7 @@ export default class UploadFiles extends Component {
       selectedFiles: undefined,
       currentFile: undefined,
       progress: 0,
-      message: "",
+      message: "Muista painaa Lataa nappia",
 
       fileInfos: [],
     };
@@ -51,7 +51,7 @@ export default class UploadFiles extends Component {
       .catch(() => {
         this.setState({
           progress: 0,
-          // message: "Could not upload the file!",
+          message: "Lataus valmis",
           currentFile: undefined,
         });
       });
