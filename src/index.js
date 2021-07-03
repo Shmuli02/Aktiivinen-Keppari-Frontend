@@ -87,7 +87,7 @@ const App = () => {
     <button onClick={handleLogout}>Kirjaudu ulos</button>
   )
 
-  ReactGA.initialize('G-2WXGPS31R0');
+  ReactGA.initialize('UA-200757435-1');
   ReactGA.pageview(window.location.pathname + window.location.search);
 
 
