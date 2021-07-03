@@ -47,17 +47,17 @@ const Login = (props) => {
       <Notification message={errorMessage} />
       <form className="px-4 py-3" onSubmit={handleLogin}>
         <div className="form-group">
-          <label>Username</label>
+          <label>Käyttäjänimi</label>
           <input type="text" autoComplete="username" className="form-control" value={username} onChange={({ target }) => setUsername(target.value)} placeholder="Käyttäjänimi"/>
         </div>
         <div className="form-group">
-          <label >Password</label>
+          <label >Salasana</label>
           <input type="password" autoComplete="current-password" className="form-control" value={password} onChange={({ target }) => setPassword(target.value)} placeholder="Salasana"/>
         </div>
         <button type="submit" className="btn btn-primary">Kirjaudu</button>
       </form>
       <div className="dropdown-divider"></div>
-      <a className="dropdown-item" href="/register">Rekistöröidy</a>
+      <a className="dropdown-item" href="/register"><b>Uusi käyttäjä? Rekisteröidy</b></a>
   </div>
   )
 }

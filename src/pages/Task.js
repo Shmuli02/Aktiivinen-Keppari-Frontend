@@ -76,7 +76,7 @@ const Tasks = ({tasks,notes,user,handleNoteChange}) => {
               ? <EditNoteForm taskId={task.id} handleNoteChange={handleNoteChange}  note={notes.filter(function(note) {
                 return note.task == task.id
               })}/>
-              : <NewNoteForm taskId={task.id} handleNoteChange={handleNoteChange} user={user}/> 
+              : <NewNoteForm taskId={task.id} handleNoteChange={handleNoteChange} user={user} title={task.title}/> 
               }
             </td> : ''}
           </tr>

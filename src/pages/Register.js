@@ -33,7 +33,7 @@ const Register = (props) => {
       history.push('/login')
       } catch (exception) {
         event.preventDefault()
-        setErrorMessage('Ongelma')
+        setErrorMessage('Virhe')
         
       }
     } else {
