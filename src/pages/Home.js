@@ -6,9 +6,9 @@ const Home = () => (
   <div className="Home">
     
     <h1>Aktiivinen keppari kilpailu jatkuu!</h1>
-    <p>Kesän 2021 kilpailuissa keppariharrastajan tehtävänä on suorittaa tehtäväpassin tehtävät kilpailuaikana. Kaikkien osallistujien kesken arvotaan hyviä esinepalkintoja.</p>
+    <p>Kesän 2021 kilpailussa keppariharrastaja suorittaa tehtäväpassin tehtävät kilpailuaikana. Kaikkien osallistujien kesken arvotaan hyviä esinepalkintoja.</p>
 
-    <p><b>Kilpailuaika:</b> 1.7.–31.7.2021</p>
+    <p><b>Kilpailuaika:</b> 5.7.–31.7.2021</p>
 
     <p><b>Osallistumisoikeus:</b> Avoin kaikille</p>
 
@@ -25,12 +25,13 @@ const Home = () => (
 
     <b>Ohjeet osallistumiseen:</b>
     <ul>
-      <li>Avaa kilpailusivut keppari.com</li>
-      <li>Rekisteröidy sivulle</li>
-      <li>Kun olet tehnyt tehtävän, niin käy rekisteröimässä suorituksesi</li>
-      <li>Kun olet suorittanut kaikki tehtävät, niin paina nappia Tarkista. Saat todistuksen suorituksestasi pari päivän sisällä sähköpostiisi</li>
-      <li>Voit tulostaa itsellesi pdf muodossa tehtäväpassin</li>
+      <li>Avaa kilpailusivut hewi.fi/aktiivinen-keppari/</li>
+      <li>Luo käyttäjätunnus kilpailu sivulle <a href='https://aktiivinen-keppari.herokuapp.com/register'>tästä</a></li>
+      <li>Kun olet tehnyt tehtävän, käy rekisteröimässä suoritus <a href='https://aktiivinen-keppari.herokuapp.com/tasks'> Tehtävät sivulle</a></li>
+      <li>Kun olet suorittanut kaikki tehtävät, voit ladata todistuksen suorituksestasi pari päivän sisällä </li>
     </ul>
+    <h4>Yhteystiedot:</h4>
+    <p>Ongalma tilanteissa ota yhteyttä sähköpostitse <a href='mailto:keppari@hewi.fi'>keppari@hewi.fi</a></p>
   </div>
 )
 
