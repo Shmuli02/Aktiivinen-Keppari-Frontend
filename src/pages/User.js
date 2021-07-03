@@ -31,7 +31,7 @@ const User = ({tasks,user,notes,handleNoteChange}) => {
 
         <div>
           <p>Olet suorittanut kaikki tehtävät <Badge variant="success">Tarkistettu</Badge></p>
-          <p>Voit ladata diplomin tämän linkin kautta <a class="btn btn-success" href={userData.diploma} target="_blank">Lataa diplomi</a></p>
+          <p>Voit ladata diplomin tämän linkin kautta <a className="btn btn-success" href={userData.diploma} target="_blank">Lataa diplomi</a></p>
           
 
         </div>
