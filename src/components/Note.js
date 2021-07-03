@@ -84,7 +84,7 @@ function EditNoteForm({taskId,note,handleNoteChange}) {
 }
 
 
-function NewNoteForm({taskId,handleNoteChange,user}) {
+function NewNoteForm({taskId,handleNoteChange,user,title}) {
   const [show, setShow] = useState(false);
   const [url, setUrl] = useState('')
   const [allowedToPublish, setAllowedToPublish] = useState(false)
@@ -120,7 +120,7 @@ function NewNoteForm({taskId,handleNoteChange,user}) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Col>
