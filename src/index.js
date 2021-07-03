@@ -24,6 +24,8 @@ import {
   Redirect,
   useParams,
 } from "react-router-dom"
+import ReactGA from 'react-ga';
+
 
 
 const App = () => {
@@ -84,6 +86,9 @@ const App = () => {
   const logout = () => (
     <button onClick={handleLogout}>Kirjaudu ulos</button>
   )
+
+  ReactGA.initialize('G-2WXGPS31R0');
+  ReactGA.pageview(window.location.pathname + window.location.search);
 
 
   return (
