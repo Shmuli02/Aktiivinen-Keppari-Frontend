@@ -1,12 +1,21 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { ProgressBar, Table, Badge, Button } from 'react-bootstrap'
 import {EditNoteForm, NewNoteForm} from '../components/Note'
+import userServise from '../services/user'
 
 const User = ({tasks,user,notes,handleNoteChange}) => {
+  const [userData, setUserData] = useState([])
   const notesId = notes.map(note => note.task)
   const userTasks = tasks.filter(task => notesId.includes(task.id))
   const taskLenght = tasks.length
   const userTasksLenght = userTasks.length
+  async function getUserData() {
+    const userdata = await userServise.userData({username:user})
+    setUserData(userdata[0])
+  }
+  useEffect( () => {
+    getUserData()
+  },[])
 
   return (
   <div className="UserPage">
@@ -15,13 +24,16 @@ const User = ({tasks,user,notes,handleNoteChange}) => {
     <p>suoritettu {userTasksLenght}/{taskLenght} tehtävää</p>
     {taskLenght == userTasksLenght ? 
     <div>
-      <p>Olet suorittanut kaikki tehtävät <Badge variant="info">Tarkistuksessa</Badge></p>
-      {/* <b>Tilanne: </b><Badge variant="info">Tarkistus</Badge> */}
-      <p>Voit ladata diplomin tämän linkin kautta 
-      <Button variant="primary" size="sm">
-      Lataa diplomi
-    </Button>{' '}
-    </p>
+      {userData.diploma == '' ?
+        <div>
+          <p>Olet suorittanut kaikki tehtävät <Badge variant="info">Tarkistuksessa</Badge></p>
+        </div> :
+
+        <div>
+          <p>Olet suorittanut kaikki tehtävät <Badge variant="success">Tarkistettu</Badge></p>
+          <p>Voit ladata diplomin tämän linkin kautta <Button variant="primary" href={userData.diploma}>Lataa diplomi</Button></p>
+        </div>
+        }
     </div>
     : ''}
     
@@ -54,7 +66,7 @@ const User = ({tasks,user,notes,handleNoteChange}) => {
       </tbody>
     </Table>
     </div>
-    : <p>ei suoritukisa</p>}
+    : <p>ei suorituksia</p>}
   </div>
   )
 }
