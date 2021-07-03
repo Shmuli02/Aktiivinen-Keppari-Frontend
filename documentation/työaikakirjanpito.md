@@ -38,3 +38,11 @@
 | | 1 | tehtävien luonti |
 | | 1 | merkintöjen automaattinen päivitys kun muutos merkintöihin |
 | | 3 | pieniä muutoksia |
+| | 3 | gallerian luonti |
+| 2.7 | 1 | tiedostojen tallennus s3 | 
+| | 1 | backend note muokkausta |
+| | 1 | lomakkeiden muokkuatsa |
+| | 3 | tietokanta galleria kuville |
+| 3.7 | 1 | viimeistelyä |
+| | 2 | diplomin näyttäminen omat sivulla | 
+| | 2 | google analytic |
