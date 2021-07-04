@@ -72,7 +72,7 @@ export default function Timer() {
         ]}
       >
         {({ elapsedTime }) =>
-          renderTime("minuuttia", getTimeMinutes(hourSeconds - elapsedTime))
+          renderTime("minuutia", getTimeMinutes(hourSeconds - elapsedTime))
         }
       </CountdownCircleTimer>
       <div className="TimerSec">
@@ -86,7 +86,7 @@ export default function Timer() {
         ]}
       >
         {({ elapsedTime }) =>
-          renderTime("sekunttia", getTimeSeconds(elapsedTime))
+          renderTime("sekuntia", getTimeSeconds(elapsedTime))
         }
       </CountdownCircleTimer>
       </div>
