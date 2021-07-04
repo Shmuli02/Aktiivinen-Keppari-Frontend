@@ -45,7 +45,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3003",
+  "proxy": "https://aktiivinen-keppari.herokuapp.com",
   "devDependencies": {
     "cross-env": "^7.0.3",
     "css-loader": "^4.3.0",
