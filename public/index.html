@@ -2,9 +2,18 @@
 <html lang="en">
   <head>
     <style>
-      img {
-        max-width: 100%;
-        max-height: auto;
+      body, html {
+  height: 100%;
+  margin: 0;
+}
+      .bg {
+        background-image: url("/keppari-kansikuva.jpg");
+
+        height: 50%; 
+
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
       }
     </style>
     <link
@@ -39,7 +48,8 @@
     <title>Aktiivinen Keppari</title>
   </head>
   <body>
-    <img class="logo" src="/keppari-kansikuva.jpg" alt="My_Logo">
+    <div class="bg"></div>
+    <!-- <img class="logo" src="/keppari-kansikuva2.jpg" alt="My_Logo"> -->
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
