@@ -6,7 +6,7 @@ class UploadFilesService {
 
     formData.append("file", file);
     formData.append("user", user)
-    return http.post("/api/upload", formData, {
+    return http.post("https://aktiivinen-keppari.herokuapp.com/api/upload", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
