@@ -33,7 +33,7 @@ const Tasks = ({tasks,notes,user,handleNoteChange}) => {
   );
 
   return (
-  <div>
+  <div className="Task">
     <h1>Tehtävät</h1>
     <Notification message={errorMessage} />
     <br></br>
@@ -73,7 +73,7 @@ const Tasks = ({tasks,notes,user,handleNoteChange}) => {
             {user ?
             <td>
               {notesId.includes(task.id) 
-              ? <EditNoteForm taskId={task.id} handleNoteChange={handleNoteChange}  note={notes.filter(function(note) {
+              ? <EditNoteForm taskId={task.id} handleNoteChange={handleNoteChange} title={task.title} note={notes.filter(function(note) {
                 return note.task == task.id
               })}/>
               : <NewNoteForm taskId={task.id} handleNoteChange={handleNoteChange} user={user} title={task.title}/> 

@@ -10,7 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import UploadFiles from "../components/upload-files";
 
-function EditNoteForm({taskId,note,handleNoteChange}) {
+function EditNoteForm({taskId,note,handleNoteChange,title}) {
   const [show, setShow] = useState(false);
   const noteToEdit = note[0]
   const [url, setUrl] = useState(noteToEdit.url)
@@ -52,13 +52,13 @@ function EditNoteForm({taskId,note,handleNoteChange}) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Col>
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Label>Linkki</Form.Label>
-              <Form.Control as="textarea" rows={2} onChange={handleUrlChange} value={url} />
+              <Form.Control as="textarea" rows={2} onChange={handleUrlChange} value={url} placeholder="linkki"/>
             </Form.Group>
 
           </Col>
