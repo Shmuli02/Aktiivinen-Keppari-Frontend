@@ -46,3 +46,5 @@
 | 3.7 | 1 | viimeistelyä |
 | | 2 | diplomin näyttäminen omat sivulla | 
 | | 2 | google analytic |
+| 4.7 | 3 | viimeistelyä |
+| yht. | 89,5 | 

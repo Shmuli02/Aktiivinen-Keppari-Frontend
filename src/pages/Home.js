@@ -1,10 +1,13 @@
 import React from 'react'
 import Upload from '../components/Upload'
+import { Alert } from 'react-bootstrap'
 
 
 const Home = () => (
   <div className="Home">
-    
+    <Alert  variant='danger'>
+    Vuoden 2021 kilpailu on päättynyt
+  </Alert>
     <h1>Aktiivinen keppari kilpailu jatkuu!</h1>
     <p>Kesän 2021 kilpailussa keppariharrastaja suorittaa tehtäväpassin tehtävät kilpailuaikana. Kaikkien osallistujien kesken arvotaan hyviä esinepalkintoja.</p>
 
