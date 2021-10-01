@@ -47,5 +47,5 @@
 | | 2 | diplomin näyttäminen omat sivulla | 
 | | 2 | google analytic |
 | 4.7 | 3 | viimeistelyä |
-| 1.10 | 1 | viimeistly palautusta varten |
+| 1.10 | 1 | viimeistely palautusta varten |
 | yht. | 90,5 | 
